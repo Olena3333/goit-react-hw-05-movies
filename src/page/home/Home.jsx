@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { fetchMovies } from 'services/api';
 import { cutText } from 'helpers/cutText';
@@ -11,6 +10,7 @@ import {
 } from './Home.styled';
 import { useHttp } from 'hooks/useHttp';
 import { Louder } from 'components/Louder';
+import PropTypes from 'prop-types';
 
 export const Home = () => {
   const text = trending => {
@@ -48,13 +48,14 @@ export const Home = () => {
     </StyWrapper>
   );
 };
+Home.propTypes = {
+  trendings: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    })
+  ).isRequired,
+};
 
-// import { useEffect, useState } from 'react';
-// import { getTrendingMovies } from '../../api/api';
-// import { HomeList } from '../../components/HomeList/HomeList';
-// import s from './Home.module.css';
-
-// export function Home() {
 //   const [trendings, setTrendings] = useState([]);
 
 //   useEffect(() => {
@@ -62,13 +63,3 @@ export const Home = () => {
 //       setTrendings(trendings);
 //     });
 //   }, []);
-
-//   return (
-//     <div className={s.trendingDiv}>
-//       <h1 className={s.treandingHeading}>Popular today</h1>
-//       <ul className={s.trendingUl}>
-//         {trendings.length > 0 && <HomeList trendings={trendings} />}
-//       </ul>
-//     </div>
-//   );
-// }

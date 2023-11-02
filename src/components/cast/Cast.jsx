@@ -3,6 +3,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { fetchCastMovieById } from '../../services/api';
 import nophoto from '../../images/nophoto.jpg';
+
 export const Cast = () => {
   const location = useLocation();
   const { id } = useParams();

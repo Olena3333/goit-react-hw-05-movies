@@ -8,8 +8,8 @@ import {
 } from './moviesList.styled';
 import { cutText } from 'helpers/cutText';
 import noposter from '../../images/noposter.jpg';
-
-export default function MoviesList({ searchMovies }) {
+import PropTypes from 'prop-types';
+export const MoviesList = ({ searchMovies }) => {
   const location = useLocation();
 
   if (!searchMovies || searchMovies.length === 0) {
@@ -36,4 +36,13 @@ export default function MoviesList({ searchMovies }) {
       ))}
     </StyledList>
   );
-}
+};
+MoviesList.propTypes = {
+  searchMovies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      poster_path: PropTypes.string,
+      title: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};

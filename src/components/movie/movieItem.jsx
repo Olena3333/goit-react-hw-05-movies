@@ -4,6 +4,7 @@ import {
   StyledList,
   StyledWrapper,
 } from './movieItem.styled.';
+import PropTypes from 'prop-types';
 
 export const MovieItem = ({ movie }) => {
   return (
@@ -29,4 +30,19 @@ export const MovieItem = ({ movie }) => {
       </StyledKontentWrapper>
     </StyledWrapper>
   );
+};
+MovieItem.propTypes = {
+  movie: PropTypes.shape({
+    poster_path: PropTypes.string,
+    title: PropTypes.string,
+    release_date: PropTypes.string,
+    vote_average: PropTypes.number,
+    overview: PropTypes.string,
+    genres: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number,
+        name: PropTypes.string,
+      })
+    ),
+  }).isRequired,
 };
