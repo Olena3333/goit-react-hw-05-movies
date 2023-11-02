@@ -1,5 +1,13 @@
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import {
+  StyledImg,
+  StyledList,
+  StyledListItem,
+  StyledText,
+} from './moviesList.styled';
+import { cutText } from 'helpers/cutText';
+import noposter from '../../images/noposter.jpg';
 
 export default function MoviesList({ searchMovies }) {
   const location = useLocation();
@@ -9,23 +17,23 @@ export default function MoviesList({ searchMovies }) {
   }
 
   return (
-    <ul>
+    <StyledList>
       {searchMovies.map(movie => (
-        <li key={movie.id}>
+        <StyledListItem key={movie.id}>
           <Link to={`/movie/${movie.id}`} state={{ from: location }}>
-            <img
+            <StyledImg
               src={
                 movie.poster_path
                   ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-                  : 'https://placeholder-url.com/placeholder-image.jpg'
+                  : `${noposter}`
               }
               alt={movie.title}
               height="446px"
             />
-            <p>{movie.title}</p>
+            <StyledText>{cutText(movie.title)}</StyledText>
           </Link>
-        </li>
+        </StyledListItem>
       ))}
-    </ul>
+    </StyledList>
   );
 }

@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-
+import { StyledSection } from './Movies.styled';
 import MoviesList from 'components/movies/MoviesList';
 import { findMovieByName } from 'services/api';
+import PropTypes from 'prop-types';
 
 export const Movies = () => {
   const [inputChange, setInputChange] = useState('');
@@ -31,7 +32,7 @@ export const Movies = () => {
   }
 
   return (
-    <section>
+    <StyledSection>
       <form onSubmit={handleSubmit}>
         <label>
           Provide a search term{' '}
@@ -42,9 +43,20 @@ export const Movies = () => {
             }}
           />
         </label>
-        <button type="submit">Search</button>
+        <button type="submit" disabled={!inputChange}>
+          Search
+        </button>
       </form>
       <MoviesList searchMovies={searchMovies} />
-    </section>
+    </StyledSection>
   );
+};
+MoviesList.propTypes = {
+  searchMovies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      poster_path: PropTypes.string,
+      title: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };

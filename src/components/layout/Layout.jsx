@@ -1,12 +1,22 @@
+import { Louder } from 'components/Louder';
 import { NavBar } from 'components/navBar/NavBar';
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
+import styled from 'styled-components';
 
 export const Layout = () => {
   return (
-    <main>
-      <NavBar />
-      <Outlet />
-    </main>
+    <StyleWrapper>
+      <header>
+        <NavBar />
+        <Suspense fallback={<Louder />}>
+          <Outlet />
+        </Suspense>
+      </header>
+    </StyleWrapper>
   );
 };
+
+const StyleWrapper = styled.main`
+  padding: 50px;
+`;

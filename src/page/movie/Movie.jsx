@@ -7,9 +7,11 @@ import {
   useParams,
 } from 'react-router-dom';
 import { fetchMovieById } from 'services/api';
-import { MovieItem } from 'components/movie/movieItem';
+import { MovieItem } from '../../components/movie/movieItem';
 import { useHttp } from 'hooks/useHttp';
 import { Louder } from 'components/Louder';
+import { StyledList } from './Movie.styled';
+import { toast } from 'react-toastify';
 
 export const Movie = () => {
   const { id } = useParams();
@@ -21,8 +23,8 @@ export const Movie = () => {
   //   fetchMovieById(id).then(response => setMovie(response));
   // }, [id]);
 
-  const [movie, setMovie] = useHttp(fetchMovieById, id);
-
+  const [movie, , , error] = useHttp(fetchMovieById, id);
+  toast.info({ error });
   if (!movie) {
     return <Louder />;
   }
@@ -32,13 +34,19 @@ export const Movie = () => {
       <div>
         <Link to={backLinkHref}>&#8592; Return</Link>
         <MovieItem movie={movie} />
-        <NavLink to={`cast`} state={{ backLinkHref }}>
-          Cast
-        </NavLink>
-        <NavLink to={`reviews`} state={{ backLinkHref }}>
-          Reviews
-        </NavLink>
-
+        <StyledList>
+          Additional Information
+          <li>
+            <NavLink to={`cast`} state={{ backLinkHref }}>
+              Cast
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to={`reviews`} state={{ backLinkHref }}>
+              Reviews
+            </NavLink>
+          </li>
+        </StyledList>
         <Suspense>
           <Outlet />
         </Suspense>

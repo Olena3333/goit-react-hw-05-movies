@@ -3,7 +3,7 @@ import {
   StyledKontentWrapper,
   StyledList,
   StyledWrapper,
-} from './movie.styled.';
+} from './movieItem.styled.';
 
 export const MovieItem = ({ movie }) => {
   return (

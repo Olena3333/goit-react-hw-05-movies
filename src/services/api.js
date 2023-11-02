@@ -26,7 +26,7 @@ export async function findMovieByName(movieName) {
   return response.data.results;
 }
 
-export async function getCastMovieById(movie_id) {
+export async function fetchCastMovieById(movie_id) {
   const axiosUrl = `movie/${movie_id}/credits?api_key=${API_KEY}&language=en-US`;
   const response = await axios.get(axiosUrl);
   if (response.data.cast.length === 0) {
@@ -44,7 +44,7 @@ export async function getMovieReviews(movie_id) {
   return response.data.results;
 }
 
-axios.defaults.baseURL = 'https://api.themoviedb.org/3';
+// axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 // const key = '4cb470234e4a9a78e40f288ec25b93f9';
 
 // export const fetchMovies = async params => {
