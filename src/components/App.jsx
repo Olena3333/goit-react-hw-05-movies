@@ -7,8 +7,8 @@ import { Route, Routes } from 'react-router-dom';
 
 import { Movie } from 'page/movie/MovieDetails';
 import { Movies } from 'page/movies/Movies';
-
-// import { toast } from 'react-toastify';
+import { Cast } from './cast/Cast';
+import { Reviews } from './Reviews/Reviews';
 
 export const App = () => {
   return (
@@ -17,9 +17,12 @@ export const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="movies" element={<Movies />} />
-          <Route path="movie/:id" element={<Movie />} />
+          <Route path="movie/:id" element={<Movie />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
+          <Route path="*" element={<NotFound />} />
         </Route>
-        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );

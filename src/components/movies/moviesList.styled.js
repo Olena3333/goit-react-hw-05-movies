@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-export const StyledList = styled.diw`
+export const StyledList = styled.ul`
   list-style-type: none;
   padding: 40px;
   margin: 30px;

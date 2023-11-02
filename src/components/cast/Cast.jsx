@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import nophoto from '../../images/nophoto.jpg';
 import { fetchCastMovieById } from 'services/api';
+import { toast } from 'react-toastify';
 
 export const Cast = () => {
   const { id } = useParams();
@@ -20,6 +21,10 @@ export const Cast = () => {
     };
     movieCast();
   }, [id]);
+
+  if (cast.length === 0) {
+    toast.info('We dont have any Cast');
+  }
 
   return (
     <>

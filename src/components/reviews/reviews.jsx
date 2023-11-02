@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { getMovieReviews } from 'services/api';
 
-export const reviews = () => {
+export const Reviews = () => {
   // const [reviews, setReviews] = useHttp(getMovieReviews, id);
   const { id } = useParams();
   const [reviews, setReviews] = useState([]);
