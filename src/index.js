@@ -6,7 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
+  <BrowserRouter basename={'/goit-react-hw-05-movies'}>
     <App />
     <ToastContainer autoClose={1000} />
   </BrowserRouter>

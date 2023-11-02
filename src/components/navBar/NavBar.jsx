@@ -7,7 +7,7 @@ export const NavBar = () => {
     <nav>
       <StyleWrapper>
         <StyledLink to="/">Home</StyledLink>
-        <StyledLink to="/about">Movies</StyledLink>
+        <StyledLink to="/movies">Movies</StyledLink>
       </StyleWrapper>
     </nav>
   );
@@ -16,12 +16,17 @@ export const NavBar = () => {
 const StyleWrapper = styled.ul`
   display: flex;
   gap: 20px;
+  margin: 10px 60px;
+  padding: 20px;
+  background-color: #3fb54cc9;
+  border-radius: 12px;
 `;
 const StyledLink = styled(NavLink)`
   text-decoration: none;
-  color: black;
+  font-size: 36px;
+  color: white;
 
   &.active {
-    color: blue;
+    background-color: #030404c9;
   }
 `;
