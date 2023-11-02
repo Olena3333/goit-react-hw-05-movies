@@ -10,8 +10,9 @@ import { fetchMovieById } from 'services/api';
 import { MovieItem } from '../../components/movie/movieItem';
 import { useHttp } from 'hooks/useHttp';
 import { Louder } from 'components/Louder';
-import { StyledList } from './Movie.styled';
+import { StyledList } from './MovieDetails.styled';
 import { toast } from 'react-toastify';
+import styled from 'styled-components';
 
 export const Movie = () => {
   const { id } = useParams();
@@ -32,25 +33,27 @@ export const Movie = () => {
   return (
     <div>
       <div>
-        <Link to={backLinkHref}>&#8592; Return</Link>
+        <StyledLink to={backLinkHref}> Return</StyledLink>
         <MovieItem movie={movie} />
         <StyledList>
           Additional Information
-          <li>
-            <NavLink to={`cast`} state={{ backLinkHref }}>
-              Cast
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to={`reviews`} state={{ backLinkHref }}>
-              Reviews
-            </NavLink>
-          </li>
+          <NavLink to={'/movie/:movieId/cast'} state={{ backLinkHref }}>
+            Cast
+          </NavLink>
+          <NavLink to={'/movie/:movieId/reviews'} state={{ backLinkHref }}>
+            Reviews
+          </NavLink>
         </StyledList>
-        <Suspense>
+        <Suspense fallback={<Louder />}>
           <Outlet />
         </Suspense>
       </div>
     </div>
   );
 };
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  font-size: 32px;
+  color: #030404c9;
+  margin-left: 60px;
+`;

@@ -38,6 +38,7 @@ export const Movies = () => {
           Provide a search term{' '}
           <input
             value={inputChange}
+            type="search"
             onChange={e => {
               setInputChange(e.target.value);
             }}

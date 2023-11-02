@@ -9,7 +9,8 @@ import {
 import { cutText } from 'helpers/cutText';
 import noposter from '../../images/noposter.jpg';
 import PropTypes from 'prop-types';
-export const MoviesList = ({ searchMovies }) => {
+
+export default function MoviesList({ searchMovies }) {
   const location = useLocation();
 
   if (!searchMovies || searchMovies.length === 0) {
@@ -36,7 +37,7 @@ export const MoviesList = ({ searchMovies }) => {
       ))}
     </StyledList>
   );
-};
+}
 MoviesList.propTypes = {
   searchMovies: PropTypes.arrayOf(
     PropTypes.shape({

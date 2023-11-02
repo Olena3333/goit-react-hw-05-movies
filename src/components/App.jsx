@@ -5,7 +5,7 @@ import { Layout } from './layout/Layout';
 
 import { Route, Routes } from 'react-router-dom';
 
-import { Movie } from 'page/movie/Movie';
+import { Movie } from 'page/movie/MovieDetails';
 import { Movies } from 'page/movies/Movies';
 
 // import { toast } from 'react-toastify';

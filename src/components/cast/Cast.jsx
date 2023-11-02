@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { fetchCastMovieById } from '../../services/api';
+
 import nophoto from '../../images/nophoto.jpg';
+import { fetchCastMovieById } from 'services/api';
 
 export const Cast = () => {
-  const location = useLocation();
   const { id } = useParams();
   const [cast, setCast] = useState([]);
 
@@ -18,7 +18,6 @@ export const Cast = () => {
         console.error(error);
       }
     };
-
     movieCast();
   }, [id]);
 

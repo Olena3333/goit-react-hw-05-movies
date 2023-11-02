@@ -1,11 +1,11 @@
 // import { useHttp } from 'hooks/useHttp';
 import React, { useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
-import { getMovieReviews } from 'services/api';
+import { useParams } from 'react-router-dom';
+
 import { toast } from 'react-toastify';
+import { getMovieReviews } from 'services/api';
 
 export const reviews = () => {
-  const location = useLocation();
   // const [reviews, setReviews] = useHttp(getMovieReviews, id);
   const { id } = useParams();
   const [reviews, setReviews] = useState([]);
