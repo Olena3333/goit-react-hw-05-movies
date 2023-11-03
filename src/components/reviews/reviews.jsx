@@ -32,7 +32,9 @@ export default function Reviews() {
           </StyledList>
         </div>
       )}
-      {!reviews.length && <div>We don't have any reviews for this movie.</div>}
+      {!reviews.length && (
+        <div>We don't have any reviews for this movie...</div>
+      )}
     </>
   );
 }
