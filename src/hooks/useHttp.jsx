@@ -11,8 +11,7 @@ export const useHttp = (func, param) => {
         const data = await func(param);
         setData(data);
       } catch (error) {
-        setError(error.massege);
-        console.log('Error fetching movies:', error);
+        setError(error.message);
       } finally {
         setLoading(false);
       }

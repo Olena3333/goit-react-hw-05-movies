@@ -19,12 +19,6 @@ export const Movie = () => {
   const { id } = useParams();
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/';
-
-  // const [movie, setMovie] = useState(null);
-  // useEffect(() => {
-  //   fetchMovieById(id).then(response => setMovie(response));
-  // }, [id]);
-
   const [movie, , , error] = useHttp(fetchMovieById, id);
   toast.info({ error });
   if (!movie) {

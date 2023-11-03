@@ -38,7 +38,7 @@ export const MovieItem = ({ movie }) => {
 };
 
 MovieItem.propTypes = {
-  movie: PropTypes.oneOf(
+  movie: PropTypes.oneOfType([
     PropTypes.shape({
       poster_path: PropTypes.string,
       title: PropTypes.string,
@@ -51,6 +51,7 @@ MovieItem.propTypes = {
           name: PropTypes.string,
         })
       ),
-    })
-  ),
+    }),
+    PropTypes.array,
+  ]),
 };

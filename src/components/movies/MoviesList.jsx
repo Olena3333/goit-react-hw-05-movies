@@ -16,7 +16,6 @@ export default function MoviesList({ searchMovies }) {
   if (!searchMovies || searchMovies.length === 0) {
     return <p>No movies found.</p>;
   }
-
   return (
     <StyledList>
       {searchMovies.map(movie => (

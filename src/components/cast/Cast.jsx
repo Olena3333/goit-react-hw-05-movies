@@ -10,25 +10,14 @@ import {
   StyledListItem,
   StyledTitle,
 } from './Cast.styled';
+import { Louder } from 'components/Louder';
 
 export const Cast = () => {
   const { id } = useParams();
-
   const [cast] = useHttp(fetchCastMovieById, id);
-
-  // const [cast, setCast] = useState([]);
-  // useEffect(() => {
-  //   const movieCast = async () => {
-  //     try {
-  //       const response = await fetchCastMovieById(id);
-  //       setCast(response);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-  //   movieCast();
-  // }, [id]);
-
+  if (!cast) {
+    return <Louder />;
+  }
   return (
     <>
       {cast.length !== 0 && (

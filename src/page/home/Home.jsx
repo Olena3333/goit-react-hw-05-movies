@@ -47,10 +47,3 @@ export const Home = () => {
     </StyWrapper>
   );
 };
-
-//   const [trendings, setTrendings] = useState([]);
-//   useEffect(() => {
-//     getTrendingMovies().then(trendings => {
-//       setTrendings(trendings);
-//     });
-//   }, []);
