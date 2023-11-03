@@ -37,10 +37,10 @@ export const Movie = () => {
         <MovieItem movie={movie} />
         <StyledList>
           Additional Information
-          <NavLink to={'/movie/:movieId/cast'} state={{ backLinkHref }}>
+          <NavLink to={'cast'} state={{ backLinkHref }}>
             Cast
           </NavLink>
-          <NavLink to={'/movie/:movieId/reviews'} state={{ backLinkHref }}>
+          <NavLink to={'reviews'} state={{ backLinkHref }}>
             Reviews
           </NavLink>
         </StyledList>

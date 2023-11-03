@@ -5,12 +5,17 @@ import {
   StyledWrapper,
 } from './movieItem.styled.';
 import PropTypes from 'prop-types';
+import noposter from '../../images/noposter.jpg';
 
 export const MovieItem = ({ movie }) => {
   return (
     <StyledWrapper>
       <img
-        src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+        src={
+          movie.poster_path
+            ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+            : `${noposter}`
+        }
         alt=""
         width="500px"
       />
