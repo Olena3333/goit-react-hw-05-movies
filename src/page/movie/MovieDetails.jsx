@@ -10,9 +10,10 @@ import { fetchMovieById } from 'services/api';
 import { MovieItem } from '../../components/movie/movieItem';
 import { useHttp } from 'hooks/useHttp';
 import { Louder } from 'components/Louder';
-import { StyledList } from './MovieDetails.styled';
+
 import { toast } from 'react-toastify';
 import styled from 'styled-components';
+import { StyledWrapper } from './MovieDetails.styled';
 
 export const Movie = () => {
   const { id } = useParams();
@@ -35,7 +36,7 @@ export const Movie = () => {
       <div>
         <StyledLink to={backLinkHref}> Return</StyledLink>
         <MovieItem movie={movie} />
-        <StyledList>
+        <StyledWrapper>
           Additional Information
           <NavLink to={'cast'} state={{ backLinkHref }}>
             Cast
@@ -43,10 +44,10 @@ export const Movie = () => {
           <NavLink to={'reviews'} state={{ backLinkHref }}>
             Reviews
           </NavLink>
-        </StyledList>
-        <Suspense fallback={<Louder />}>
-          <Outlet />
-        </Suspense>
+          <Suspense fallback={<Louder />}>
+            <Outlet />
+          </Suspense>
+        </StyledWrapper>
       </div>
     </div>
   );

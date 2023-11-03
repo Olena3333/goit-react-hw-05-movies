@@ -1,40 +1,43 @@
-import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import nophoto from '../../images/nophoto.jpg';
 import { fetchCastMovieById } from 'services/api';
-import { toast } from 'react-toastify';
+import { useHttp } from 'hooks/useHttp';
+import {
+  StyledImg,
+  StyledList,
+  StyledListItem,
+  StyledTitle,
+} from './Cast.styled';
 
 export const Cast = () => {
   const { id } = useParams();
-  const [cast, setCast] = useState([]);
 
-  useEffect(() => {
-    const movieCast = async () => {
-      try {
-        const response = await fetchCastMovieById(id);
-        setCast(response);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    movieCast();
-  }, [id]);
+  const [cast] = useHttp(fetchCastMovieById, id);
 
-  if (cast.length === 0) {
-    toast.info('We dont have any Cast');
-  }
+  // const [cast, setCast] = useState([]);
+  // useEffect(() => {
+  //   const movieCast = async () => {
+  //     try {
+  //       const response = await fetchCastMovieById(id);
+  //       setCast(response);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+  //   movieCast();
+  // }, [id]);
 
   return (
     <>
       {cast.length !== 0 && (
         <div>
-          <h2>Movie Cast</h2>
-          <ul>
+          <StyledTitle>Movie Cast</StyledTitle>
+          <StyledList>
             {cast.map(actor => (
-              <li key={actor.id}>
-                <img
+              <StyledListItem key={actor.id}>
+                <StyledImg
                   width="200px"
                   height="300px"
                   src={
@@ -45,9 +48,9 @@ export const Cast = () => {
                   alt={actor.original_name}
                 />
                 <p>{actor.name}</p>
-              </li>
+              </StyledListItem>
             ))}
-          </ul>
+          </StyledList>
         </div>
       )}
       {cast.length === 0 && <div>We don't have any cast for this movie.</div>}

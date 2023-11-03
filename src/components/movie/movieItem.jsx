@@ -3,7 +3,7 @@ import {
   StyledKontentWrapper,
   StyledList,
   StyledWrapper,
-} from './movieItem.styled.';
+} from './movieItem.styled';
 import PropTypes from 'prop-types';
 import noposter from '../../images/noposter.jpg';
 
@@ -36,18 +36,21 @@ export const MovieItem = ({ movie }) => {
     </StyledWrapper>
   );
 };
+
 MovieItem.propTypes = {
-  movie: PropTypes.shape({
-    poster_path: PropTypes.string,
-    title: PropTypes.string,
-    release_date: PropTypes.string,
-    vote_average: PropTypes.number,
-    overview: PropTypes.string,
-    genres: PropTypes.arrayOf(
-      PropTypes.shape({
-        id: PropTypes.number,
-        name: PropTypes.string,
-      })
-    ),
-  }).isRequired,
+  movie: PropTypes.oneOf(
+    PropTypes.shape({
+      poster_path: PropTypes.string,
+      title: PropTypes.string,
+      release_date: PropTypes.string,
+      vote_average: PropTypes.number,
+      overview: PropTypes.string,
+      genres: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number,
+          name: PropTypes.string,
+        })
+      ),
+    })
+  ),
 };

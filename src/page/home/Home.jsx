@@ -10,7 +10,6 @@ import {
 } from './Home.styled';
 import { useHttp } from 'hooks/useHttp';
 import { Louder } from 'components/Louder';
-import PropTypes from 'prop-types';
 
 export const Home = () => {
   const text = trending => {
@@ -20,7 +19,7 @@ export const Home = () => {
   };
   const location = useLocation();
 
-  const [trendings, setTrendings] = useHttp(fetchMovies);
+  const [trendings] = useHttp(fetchMovies);
 
   if (!trendings) {
     return <Louder />;
@@ -48,16 +47,8 @@ export const Home = () => {
     </StyWrapper>
   );
 };
-Home.propTypes = {
-  trendings: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-    })
-  ).isRequired,
-};
 
 //   const [trendings, setTrendings] = useState([]);
-
 //   useEffect(() => {
 //     getTrendingMovies().then(trendings => {
 //       setTrendings(trendings);

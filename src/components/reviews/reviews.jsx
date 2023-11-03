@@ -1,30 +1,28 @@
 // import { useHttp } from 'hooks/useHttp';
-import React, { useEffect, useState } from 'react';
+import { useHttp } from 'hooks/useHttp';
+
 import { useParams } from 'react-router-dom';
 
-import { toast } from 'react-toastify';
 import { getMovieReviews } from 'services/api';
 
 export const Reviews = () => {
-  // const [reviews, setReviews] = useHttp(getMovieReviews, id);
   const { id } = useParams();
-  const [reviews, setReviews] = useState([]);
+  const [reviews] = useHttp(getMovieReviews, id);
 
-  useEffect(() => {
-    const movieReviews = async () => {
-      try {
-        const response = await getMovieReviews(id);
-        setReviews(response);
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    movieReviews();
-  }, [id]);
+  // const [reviews, setReviews] = useState([]);
 
-  if (reviews.length === 0) {
-    toast.info('We dont have any reviews for this movie');
-  }
+  // useEffect(() => {
+  //   const movieReviews = async () => {
+  //     try {
+  //       const response = await getMovieReviews(id);
+  //       setReviews(response);
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+  //   movieReviews();
+  // }, [id]);
+
   return (
     <>
       {reviews.length !== 0 && (
