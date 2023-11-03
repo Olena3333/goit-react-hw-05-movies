@@ -9,7 +9,7 @@ import { Louder } from 'components/Louder';
 import { toast } from 'react-toastify';
 export default function Reviews() {
   const { id } = useParams();
-  const [reviews, _, loading, error] = useHttp(getMovieReviews, id);
+  const [reviews, , loading, error] = useHttp(getMovieReviews, id);
 
   if (!reviews?.length && loading) {
     return <Louder />;
