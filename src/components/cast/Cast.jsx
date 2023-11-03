@@ -11,8 +11,7 @@ import {
   StyledTitle,
 } from './Cast.styled';
 import { Louder } from 'components/Louder';
-
-export const Cast = () => {
+export default function Cast() {
   const { id } = useParams();
   const [cast] = useHttp(fetchCastMovieById, id);
   if (!cast) {
@@ -45,7 +44,7 @@ export const Cast = () => {
       {cast.length === 0 && <div>We don't have any cast for this movie.</div>}
     </>
   );
-};
+}
 
 Cast.propTypes = {
   cast: PropTypes.arrayOf(

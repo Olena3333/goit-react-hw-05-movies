@@ -7,8 +7,7 @@ import { getMovieReviews } from 'services/api';
 import { StyledList, StyledListItem, StyledTitle } from './Review.styled';
 import { Louder } from 'components/Louder';
 import { toast } from 'react-toastify';
-
-export const Reviews = () => {
+export default function Reviews() {
   const { id } = useParams();
   const [reviews, _, loading, error] = useHttp(getMovieReviews, id);
 
@@ -36,4 +35,4 @@ export const Reviews = () => {
       {!reviews.length && <div>We don't have any reviews for this movie.</div>}
     </>
   );
-};
+}

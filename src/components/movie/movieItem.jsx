@@ -6,8 +6,7 @@ import {
 } from './movieItem.styled';
 import PropTypes from 'prop-types';
 import noposter from '../../images/noposter.jpg';
-
-export const MovieItem = ({ movie }) => {
+export default function MovieItem({ movie }) {
   return (
     <StyledWrapper>
       <img
@@ -35,7 +34,7 @@ export const MovieItem = ({ movie }) => {
       </StyledKontentWrapper>
     </StyledWrapper>
   );
-};
+}
 
 MovieItem.propTypes = {
   movie: PropTypes.oneOfType([

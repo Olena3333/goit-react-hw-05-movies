@@ -11,7 +11,7 @@ import {
 import { useHttp } from 'hooks/useHttp';
 import { Louder } from 'components/Louder';
 
-export const Home = () => {
+export default function Home() {
   const text = trending => {
     const textResalt =
       trending.original_title ?? trending.title ?? trending.name;
@@ -46,4 +46,4 @@ export const Home = () => {
       </StyledList>
     </StyWrapper>
   );
-};
+}

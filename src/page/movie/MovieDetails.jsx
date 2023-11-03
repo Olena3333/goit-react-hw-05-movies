@@ -7,15 +7,15 @@ import {
   useParams,
 } from 'react-router-dom';
 import { fetchMovieById } from 'services/api';
-import { MovieItem } from '../../components/movie/movieItem';
+
 import { useHttp } from 'hooks/useHttp';
 import { Louder } from 'components/Louder';
-
 import { toast } from 'react-toastify';
 import styled from 'styled-components';
 import { StyledWrapper } from './MovieDetails.styled';
+import MovieItem from 'components/movie/movieItem';
 
-export const Movie = () => {
+export default function Movie() {
   const { id } = useParams();
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/';
@@ -24,7 +24,6 @@ export const Movie = () => {
   if (!movie) {
     return <Louder />;
   }
-
   return (
     <div>
       <div>
@@ -45,7 +44,7 @@ export const Movie = () => {
       </div>
     </div>
   );
-};
+}
 const StyledLink = styled(Link)`
   text-decoration: none;
   font-size: 32px;

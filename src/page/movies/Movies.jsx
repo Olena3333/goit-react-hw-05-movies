@@ -4,8 +4,7 @@ import { StyledSection } from './Movies.styled';
 import MoviesList from 'components/movies/MoviesList';
 import { findMovieByName } from 'services/api';
 import PropTypes from 'prop-types';
-
-export const Movies = () => {
+export default function Movies() {
   const [inputChange, setInputChange] = useState('');
   const [searchMovies, setSearchMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
@@ -51,7 +50,7 @@ export const Movies = () => {
       <MoviesList searchMovies={searchMovies} />
     </StyledSection>
   );
-};
+}
 MoviesList.propTypes = {
   searchMovies: PropTypes.arrayOf(
     PropTypes.shape({
