@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, useRef } from 'react';
 import {
   Link,
   NavLink,
@@ -18,7 +18,7 @@ import MovieItem from 'components/movie/movieItem';
 export default function Movie() {
   const { id } = useParams();
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
+  const backLinkHref = useRef(location?.state?.from ?? '/');
   const [movie, , , error] = useHttp(fetchMovieById, id);
   toast.info({ error });
   if (!movie) {
@@ -27,7 +27,7 @@ export default function Movie() {
   return (
     <div>
       <div>
-        <StyledLink to={backLinkHref}> Return</StyledLink>
+        <StyledLink to={backLinkHref.current}> Return</StyledLink>
         <MovieItem movie={movie} />
         <StyledWrapper>
           Additional Information
